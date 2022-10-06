@@ -13,7 +13,7 @@ describe '#Word' do
     end
   end
 
-  describe ('.save') do 
+  describe ('#save') do 
     it("saves a word") do
       word = Word.new("apple", nil)
       word.save()
@@ -49,6 +49,15 @@ describe '#Word' do
       word2 = Word.new("yellow", nil)
       word2.save()
       expect(Word.find(word.id)).to(eq(word))
+    end
+  end
+
+  describe('#update') do
+    it("updates a word by id") do
+      word = Word.new("apple", nil)
+      word.save()
+      word.update("orange")
+      expect(word.name).to(eq("orange"))
     end
   end
 end
