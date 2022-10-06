@@ -1,5 +1,6 @@
 require 'rspec'
 require 'word'
+require 'definition'
 
 describe '#Word' do 
 
@@ -71,5 +72,24 @@ describe '#Word' do
       expect(Word.all).to(eq([word2]))
     end
   end
-end
 
+  describe('#definitions') do
+    it("returns a word's definitions") do
+      word = Word.new("apple", nil)
+      word.save()
+      definition = Definition.new("a red fruit", word.id, nil)
+      definition.save()
+      definition2 = Definition.new("tree that bears apples", word.id, nil)
+      definition2.save()
+      expect(word.definitions).to(eq([definition, definition, definition2]))
+    end
+  end
+
+  describe('#word') do
+    it("finds the word a definition belongs to") do
+      definition = Definition.new("a red fruit", @word.id, nil)
+      definition.save()
+      expect(definition.word()).to(eq(@word))
+    end
+  end
+end
