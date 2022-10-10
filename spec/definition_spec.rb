@@ -61,10 +61,10 @@ describe '#Definition' do
 
   describe('#update') do
     it("updates an definition by id") do
-      definition = Definition.new("a red fruit", @word.id, nil)
+      definition = Definition.new("a red fruit", @word.id, 1)
       definition.save()
       definition.update("a purple tennis ball", @word.id)
-      expect(definition.name).to(eq("a purple tennis ball"))
+      expect(definition.definition).to(eq("a purple tennis ball"))
     end
   end
 
