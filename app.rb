@@ -63,15 +63,15 @@ end
 
 patch('/words/:id/definitions/:definition_id') do
   @word = Word.find(params[:id].to_i())
-  if params[:definition] != ""
+  if params[:name] != ""
     definition = Definition.find(params[:definition_id].to_i())
-    definition.update(params[:definition], @word.id)
+    definition.update(params[:name], @word.id)
   end
   erb(:word)
 end
 
 delete('/words/:id/definitions/:definition_id') do
-  definition = Definition.find(params[:song_id].to_i())
+  definition = Definition.find(params[:definition_id].to_i())
   definition.delete
   @word = Word.find(params[:id].to_i())
   erb(:word)

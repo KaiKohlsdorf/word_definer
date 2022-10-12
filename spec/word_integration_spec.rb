@@ -18,7 +18,7 @@ describe('create a definition path', {:type => :feature}) do
     word = Word.new("yellow", nil)
     word.save
     visit("/words/#{word.id}")
-    fill_in('definition_name', :with => 'a primary color')
+    fill_in('definition_definition', :with => 'a primary color')
     click_on('Add definition')
     expect(page).to have_content('a primary color')
   end

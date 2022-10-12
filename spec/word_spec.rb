@@ -84,12 +84,4 @@ describe '#Word' do
       expect(word.definitions).to(eq([definition, definition, definition2]))
     end
   end
-
-  describe('#word') do
-    it("finds the word a definition belongs to") do
-      definition = Definition.new("a red fruit", @word_id, nil)
-      definition.save()
-      expect(definition.word()).to(eq(@word))
-    end
-  end
 end
