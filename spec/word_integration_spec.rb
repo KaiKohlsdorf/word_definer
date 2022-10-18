@@ -36,13 +36,13 @@ describe('update a word', {:type => :feature}) do
   end
 end
 
-# describe('delete a word', {:type => :feature}) do
-#   it('deletes a word and then goes to the word page') do
-#     word = Word.new("yellow", nil)
-#     word.save
-#     visit("/words/#{word.id}")
-#     click_on('Edit word')
-#     click_on('Delete word')
-#     expect(page).to have_content('')
-#   end
-# end
+describe('delete a word', {:type => :feature}) do
+  it('deletes a word and then goes to the word page') do
+    word = Word.new("yellow", nil)
+    word.save
+    visit("/words/#{word.id}")
+    click_on('Edit word')
+    click_on('Delete word')
+    expect(page).to have_content('')
+  end
+end
