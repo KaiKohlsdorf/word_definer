@@ -46,3 +46,38 @@ describe('delete a word', {:type => :feature}) do
     expect(page).to have_content('')
   end
 end
+
+describe('update definition', {:type => :feature}) do
+  it('updates definition and then goes to the word page') do
+    word = Word.new("yellow", nil)
+    word.save
+    visit("/words/#{word.id}")
+    fill_in('definition_definition', :with => 'a primary color')
+    click_on('Add definition')
+    expect(page).to have_content('a primary color')
+    fill_in('definition_definition', :with => 'bright like the sun')
+    click_on('Add definition')
+    expect(page).to have_content('bright like the sun')
+  end
+end
+
+# describe('deletes definition', {:type => :feature}) do
+#   it('deletes definition and then goes to the word page') do
+#     word = Word.new("easy", nil)
+#     word.save
+#     visit("/words/#{word.id}")
+#     fill_in('definition_text', :with => 'without difficulty or effort')
+#     click_on('Add!')
+#     expect(page).to have_content('without difficulty or effort')
+#     fill_in('definition_text', :with => 'opposite of hard')
+#     click_on('Add!')
+#     expect(page).to have_content('opposite of hard')
+#     click_on('opposite of hard')
+#     fill_in('name', :with => 'free from worries or problems')
+#     click_on('Update definition')
+#     expect(page).to have_content('free from worries or problems')
+#     click_on('free from worries or problems')
+#     click_on('Delete definition')
+#     expect(page).to have_content('without difficulty or effort')
+#   end
+# end
